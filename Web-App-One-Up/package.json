@@ -1,0 +1,23 @@
+{
+  "name": "web-app-one-up",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "^5.0.18",
+    "@fontsource/inter": "^5.0.18",
+    "primeicons": "^7.0.0",
+    "primevue": "^3.52.0",
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "vite": "^5.2.8"
+  }
+}
