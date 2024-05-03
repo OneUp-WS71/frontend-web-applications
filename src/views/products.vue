@@ -7,13 +7,13 @@
             <div class="cards">
                 <Card class="card">
                     <template #header>
-                        <img alt="user header" src="../assets/watch.png" /> <!--//cambiar aqui-->
+                        <img alt="user header":src="products.length > 0 ? products[0].imageproduct : ''"  /> <!--//cambiar aqui-->
                     </template>
-                    <template #title>OneUp ElderlyCare</template><!--//cambiar aqui-->
-                    <template #subtitle>Extra Bass</template><!--//cambiar aqui-->
+                    <template #title>{{ products.length > 0 ? products[0].name : '' }}</template><!--//cambiar aqui-->
+                    <template #subtitle>{{ products.length > 0 ? products[0].price : '' }}</template><!--//cambiar aqui-->
                     <template #content>
                         <p class="m-0">
-                            A smart bracelet that monitors the status of the person wearing it in real time <!--//cambiar aqui-->
+                            {{ products.length > 0 ? products[0].description : '' }} <!--//cambiar aqui-->
                         </p>
                     </template>
                     <template #footer>
@@ -25,13 +25,13 @@
                 </Card>
                 <Card class="card">
                     <template #header>
-                        <img alt="user header" src="../assets/watch.png" /><!--//cambiar aqui-->
+                        <img alt="user header":src="products.length > 0 ? products[1].imageproduct : ''"  /><!--//cambiar aqui-->
                     </template>
-                    <template #title>OneUp ElderlyCare</template><!--//cambiar aqui-->
-                    <template #subtitle>Extra Bass</template><!--//cambiar aqui-->
+                    <template #title>{{ products.length > 0 ? products[0].name : '' }}</template><!--//cambiar aqui-->
+                    <template #subtitle>{{ products.length > 0 ? products[0].price : '' }}</template><!--//cambiar aqui-->
                     <template #content>
                         <p class="m-0">
-                            A smart bracelet that monitors the status of the person wearing it in real time<!--//cambiar aqui-->
+                            {{ products.length > 0 ? products[0].description : '' }}<!--//cambiar aqui-->
                         </p>
                     </template>
                     <template #footer>
@@ -51,9 +51,25 @@
 </template>
 
 <script>
-    export default {
-        
+import axios from 'axios';
+export default {
+    data() {
+        return {
+            products: []
+        }
+    },
+    mounted() {
+    
+        axios
+          .get('https://6633c685f7d50bbd9b4aa0e7.mockapi.io/api/v1/Products')
+          .then(response => {
+            this.products = response.data;
+          })
+          .catch(error => {
+            console.log(error);
+          });
     }
+}
 </script>
 
 

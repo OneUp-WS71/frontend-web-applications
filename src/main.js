@@ -18,6 +18,8 @@ import Card from 'primevue/card';
 import InputText from 'primevue/inputtext';
 import FloatLabel from 'primevue/floatlabel';
 
+import axios from 'axios';
+
 const router = createRouter({
     history: createWebHistory(),
     routes: [
