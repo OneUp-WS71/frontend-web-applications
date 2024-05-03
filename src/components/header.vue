@@ -10,8 +10,8 @@
         </div>
         
         <div class="buttons">
-            <Button label="Iniciar Sesión" rounded/>
-            <Button label="Registrate" rounded/>
+            <Button label="Log in" rounded/>
+            <Button label="Sign up" rounded/>
         </div>
     </div>
 </template>

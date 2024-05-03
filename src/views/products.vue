@@ -2,18 +2,18 @@
     <div class="pagina">
         <div class="card-container">
             <div class="title">
-                <h1>Elderly Care :  Tu compañero inteligente para un estilo de vida saludable y consciente</h1>
+                <h1>Elderly Care :  Your smart partner for a healthy and conscious lifestyle</h1>
             </div>
             <div class="cards">
                 <Card class="card">
                     <template #header>
-                        <img alt="user header" src="../assets/watch.png" />
+                        <img alt="user header" src="../assets/watch.png" /> <!--//cambiar aqui-->
                     </template>
-                    <template #title>OneUp ElderlyCare</template>
-                    <template #subtitle>Extra Bass</template>
+                    <template #title>OneUp ElderlyCare</template><!--//cambiar aqui-->
+                    <template #subtitle>Extra Bass</template><!--//cambiar aqui-->
                     <template #content>
                         <p class="m-0">
-                            Una pulsera inteligente que monitorea el estado  de la persona que lo usa en tiempo real 
+                            A smart bracelet that monitors the status of the person wearing it in real time <!--//cambiar aqui-->
                         </p>
                     </template>
                     <template #footer>
@@ -25,13 +25,13 @@
                 </Card>
                 <Card class="card">
                     <template #header>
-                        <img alt="user header" src="../assets/watch.png" />
+                        <img alt="user header" src="../assets/watch.png" /><!--//cambiar aqui-->
                     </template>
-                    <template #title>OneUp ElderlyCare</template>
-                    <template #subtitle>Extra Bass</template>
+                    <template #title>OneUp ElderlyCare</template><!--//cambiar aqui-->
+                    <template #subtitle>Extra Bass</template><!--//cambiar aqui-->
                     <template #content>
                         <p class="m-0">
-                            Una pulsera inteligente que monitorea el estado  de la persona que lo usa en tiempo real
+                            A smart bracelet that monitors the status of the person wearing it in real time<!--//cambiar aqui-->
                         </p>
                     </template>
                     <template #footer>

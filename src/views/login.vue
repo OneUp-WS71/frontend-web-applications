@@ -5,23 +5,23 @@
         </div>
         <div class="login-container">
             <div class="title">
-                <h1 class="bolder">Iniciar Sesión</h1>
+                <h1 class="bolder">Log In</h1>
             </div>
             <div class="flex flex-column gap-2">
                 <FloatLabel style="margin-top: 1rem;">
                     <InputText style="width: 350px;border-radius: 100px;" id="username" v-model="value" />
-                    <label for="username" class="normal">Ingresa tu Nombre</label>
+                    <label for="username" class="normal">Enter Name</label>
                 </FloatLabel>
                 <FloatLabel style="margin-top: 1rem;">
                     <InputText style="width: 350px;border-radius: 100px;" id="username" v-model="value" />
-                    <label for="username" class="normal">Ingrese su contraseña</label>
+                    <label for="username" class="normal">Enter Password</label>
                 </FloatLabel>
             </div>
             <div class="buttons">
-                <Button style="margin: 1rem; width: 350px;border-radius: 100px;" class="buy-button"label="Accede a tu cuenta" />
+                <Button style="margin: 1rem; width: 350px;border-radius: 100px;" class="buy-button"label="Log in into your account" />
                 <div class="buttons-childs">
-                    <Button style="margin-top: 1rem;margin-right: 1rem;border-radius: 100px;text-align: center;" class="buy-button"label="Registrate" />
-                    <Button style="margin-top: 1rem;border-radius: 100px;text-align: center;" class="buy-button"label="Olvidaste tu contraseña" />
+                    <Button style="margin-top: 1rem;margin-right: 2rem;border-radius: 100px;text-align: center;" class="buy-button"label="Sign In" />
+                    <Button style="margin-top: 1rem;border-radius: 100px;text-align: center;" class="buy-button"label="Forgot your password?" />
                 </div>
             </div>
         </div>

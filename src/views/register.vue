@@ -3,27 +3,27 @@
         <div class="img-container">
             <img alt="user header" src="../assets/logo_lila.png"/>
         </div>
-        <div class="login-container">
+        <div class="sign-in-container">
             <div class="title">
-                <h1 class="bolder">Registrate</h1>
+                <h1 class="bolder">Sign In</h1>
             </div>
             <div class="flex flex-column gap-2">
                 <FloatLabel style="margin-top: 1rem;">
                     <InputText style="width: 350px;border-radius: 100px;" id="username" v-model="value" />
-                    <label for="username" class="normal">Ingresa tu correo</label>
+                    <label for="username" class="normal">Enter Email</label>
                 </FloatLabel>
                 <FloatLabel style="margin-top: 1rem;">
                     <InputText style="width: 350px;border-radius: 100px;" id="username" v-model="value" />
-                    <label for="username" class="normal">Ingresa tu Nombre</label>
+                    <label for="username" class="normal">Enter Name</label>
                 </FloatLabel>
                 <FloatLabel style="margin-top: 1rem;">
                     <InputText style="width: 350px;border-radius: 100px;" id="username" v-model="value" />
-                    <label for="username" class="normal">Ingrese su contraseña</label>
+                    <label for="username" class="normal">Enter Password</label>
                 </FloatLabel>
             </div>
             <div class="buttons">
-                <Button style="margin-top: 1rem;margin-right: 1rem;border-radius: 100px;text-align: center;" class="buy-button"label="Iniciar Sesión" />
-                    <Button style="margin-top: 1rem;border-radius: 100px;text-align: center;" class="buy-button"label="Crear Cuenta" />
+                <Button style="margin-top: 1rem;width: 150px;border-radius: 100px;text-align: center;" class="buy-button"label="Log In" />
+                <Button style="margin-top: 1rem;border-radius: 100px;text-align: center;" class="buy-button"label="Create Account" />
                 
             </div>
         </div>
@@ -46,7 +46,7 @@ export default {
         justify-content: center;
         align-items: center;
     }
-    .login-container{
+    .sign-in-container{
         display: flex;
         flex-direction: column;
         align-items: center;

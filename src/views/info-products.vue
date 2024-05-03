@@ -1,6 +1,6 @@
 <template >
     <div class="titulo-container">
-        <h1>Información del Producto</h1>
+        <h1>Information about the product</h1>
     </div>
     <div class="products-container">
         <div class="img-container">
@@ -10,10 +10,10 @@
             <h1 class="bold">OneUpv1 ElderlyCare</h1>
             <div class="info-container">
                 <Card class="card1">
-                    <template #title>Especificaciones</template>
+                    <template #title>Specifications</template>
                     <template #content>
                         <p class="m-0">
-                            Una pulsera inteligente que monitorea el estado  de la persona que lo usa en tiempo real
+                            A smart bracelet that monitors the status of the person wearing it in real time
                         </p>
                     </template>
                 </Card>
@@ -21,10 +21,10 @@
                     <template #title>$100</template>
                     <template #content>
                         <p class="m-0">
-                            <i class="pi pi-truck"></i> Despacho a domicilio
+                            <i class="pi pi-truck"></i> Home Delivery
                         </p>
                         <p class="m-0">
-                            <i class="pi pi-search"></i> Monitoreo del estado del pedido
+                            <i class="pi pi-search"></i> Order status monitoring
 
                         </p>
                     </template>

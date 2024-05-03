@@ -5,11 +5,11 @@ import 'primeicons/primeicons.css'
 import { createApp } from 'vue'
 import { createRouter,createWebHistory } from 'vue-router'
 import App from './App.vue'
-import Login from './views/Login.vue'
-import Header from './components/Header.vue'
-import Products from './views/Products.vue'
-import InfoProducts from './views/InfoProducts.vue'
-import Register from './views/Register.vue'
+import Login from './views/login.vue'
+import Header from './components/header.vue'
+import Products from './views/products.vue'
+import InfoProducts from './views/info-products.vue'
+import Register from './views/register.vue'
 
 import PrimeVue from 'primevue/config';
 import SelectButton from 'primevue/selectbutton';
