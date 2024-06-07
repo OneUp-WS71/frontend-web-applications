@@ -67,3 +67,58 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  padding-top: 120px;
+}
+
+.profile-card {
+  width: 500px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+}
+
+.profile-pic {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.profile-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.info-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  width: 45%;
+}
+
+.info-row label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.edit-button {
+  margin-top: 20px;
+  background-color: #5a67d8;
+  border: none;
+  color: white;
+}
+</style>
