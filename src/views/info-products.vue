@@ -4,21 +4,21 @@
     </div>
     <div class="products-container">
         <div class="img-container">
-            <img alt="reloj" src="../assets/watch.png" />
+            <img alt="reloj":src="products.length > 0 ? products[1].productImageUrl : ''" />
         </div>
         <div class="titulo2-container">
-            <h1 class="bold">OneUpv1 ElderlyCare</h1>
+            <h1 class="bold">{{ products.length > 0 ? products[1].productName : '' }}</h1>
             <div class="info-container">
                 <Card class="card1">
                     <template #title>Specifications</template>
                     <template #content>
                         <p class="m-0">
-                            A smart bracelet that monitors the status of the person wearing it in real time
+                            {{ products.length > 0 ? products[1].productDescription : '' }}
                         </p>
                     </template>
                 </Card>
                 <Card class="card2">
-                    <template #title>$100</template>
+                    <template #title>${{ products.length > 0 ? products[1].productPrice : '' }}</template>
                     <template #content>
                         <p class="m-0">
                             <i class="pi pi-truck"></i> Home Delivery
@@ -30,8 +30,8 @@
                     </template>
                     <template #footer>
                         <div class="buttons">
-                            <Button class="cart-button" icon="pi pi-shopping-cart" aria-label="Cart" />
-                            <Button class="buy-button" icon="pi pi-angle-right" label="Buy Now" />
+                            <Button class="cart-button" icon="pi pi-shopping-cart" aria-label="Cart" @click="handleBuyClick"/>
+                            <Button class="buy-button" icon="pi pi-angle-right" label="Buy Now" @click="handleBuyClick"/>
                         </div>
                     </template>
                 </Card>
@@ -41,8 +41,30 @@
     
 </template>
 <script>
+import axios from 'axios';
 export default {
-    
+    data() {
+        return {
+            products: []
+        }
+    },
+    mounted() {
+
+    axios
+        .get('https://oneupbackend.zeabur.app/api/oneup/v1/products')
+        .then(response => {
+            this.products = response.data;
+            
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    methods: {
+        handleBuyClick(){
+            this.$router.push('/payment-methods');
+        }
+    },
 }
 </script>
 <style scoped>
