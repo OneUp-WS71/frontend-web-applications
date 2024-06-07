@@ -41,3 +41,29 @@
       </div>
     </div>
   </template>
+
+<script>
+import { ref } from 'vue';
+import InputText from 'primevue/inputtext';
+import Button from 'primevue/button';
+export default {
+  components: {
+    InputText,
+    Button,
+  },
+  setup() {
+    const user = ref({
+      nombres: 'Enrique Aldhair',
+      apellidos: 'Llatas Flores',
+      direccion: 'AV La MARINA 2810',
+      distrito: 'San Miguel',
+      numero: '939498334',
+      edad: '20',
+      genero: 'M',
+      tipoUsuario: '939498334',
+    });
+
+    return { user };
+  },
+};
+</script>
