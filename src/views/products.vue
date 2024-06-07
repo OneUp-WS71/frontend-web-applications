@@ -7,37 +7,37 @@
             <div class="cards">
                 <Card class="card">
                     <template #header>
-                        <img alt="user header":src="products.length > 0 ? products[0].imageproduct : ''"  /> <!--//cambiar aqui-->
+                        <img alt="user header":src="products.length > 0 ? products[1].productImageUrl : ''" /> <!--//cambiar aqui-->
                     </template>
-                    <template #title>{{ products.length > 0 ? products[0].name : '' }}</template><!--//cambiar aqui-->
-                    <template #subtitle>{{ products.length > 0 ? products[0].price : '' }}</template><!--//cambiar aqui-->
+                    <template #title>{{ products.length > 0 ? products[1].productName : '' }}</template><!--//cambiar aqui-->
+                    <template #subtitle>{{ products.length > 0 ? products[1].productPrice : '' }}</template><!--//cambiar aqui-->
                     <template #content>
                         <p class="m-0">
-                            {{ products.length > 0 ? products[0].description : '' }} <!--//cambiar aqui-->
+                            {{ products.length > 0 ? products[1].productDescription : '' }} <!--//cambiar aqui-->
                         </p>
                     </template>
                     <template #footer>
                         <div class="buttons">
-                            <Button class="cart-button" icon="pi pi-shopping-cart" aria-label="Cart" />
-                            <Button class="buy-button" icon="pi pi-angle-right" label="Buy Now" />
+                            <Button class="cart-button" icon="pi pi-shopping-cart" aria-label="Cart" @click="handleBuyClick"/>
+                            <Button class="buy-button" icon="pi pi-angle-right" label="More Info" @click="handleCartClick"/>
                         </div>
                     </template>
                 </Card>
                 <Card class="card">
                     <template #header>
-                        <img alt="user header":src="products.length > 0 ? products[1].imageproduct : ''"  /><!--//cambiar aqui-->
+                        <img alt="user header":src="products.length > 0 ? products[1].productImageUrl : ''" /><!--//cambiar aqui-->
                     </template>
-                    <template #title>{{ products.length > 0 ? products[0].name : '' }}</template><!--//cambiar aqui-->
-                    <template #subtitle>{{ products.length > 0 ? products[0].price : '' }}</template><!--//cambiar aqui-->
+                    <template #title>{{ products.length > 0 ? products[1].productName : '' }}</template><!--//cambiar aqui-->
+                    <template #subtitle>{{ products.length > 0 ? products[1].productPrice : '' }}</template><!--//cambiar aqui-->
                     <template #content>
                         <p class="m-0">
-                            {{ products.length > 0 ? products[0].description : '' }}<!--//cambiar aqui-->
+                            {{ products.length > 0 ? products[1].productDescription : '' }}<!--//cambiar aqui-->
                         </p>
                     </template>
                     <template #footer>
                         <div class="buttons">
-                            <Button class="cart-button" icon="pi pi-shopping-cart" aria-label="Cart" />
-                            <Button class="buy-button" icon="pi pi-angle-right" label="Buy Now" />
+                            <Button class="cart-button" icon="pi pi-shopping-cart" aria-label="Cart" @click="handleBuyClick" />
+                            <Button class="buy-button" icon="pi pi-angle-right" label="More Info" @click="handleCartClick" />
                         </div>
                     </template>
                 </Card>
@@ -52,24 +52,33 @@
 
 <script>
 import axios from 'axios';
-export default {
-    data() {
-        return {
-            products: []
+    export default {
+        data() {
+            return {
+                products: []
+            }
+        },
+        methods: {
+            handleCartClick() {
+                this.$router.push('/infoproducts');
+            },
+            handleBuyClick(){
+                this.$router.push('/payment-methods');
+            }
+        },
+        mounted() {
+
+            axios
+                .get('https://oneupbackend.zeabur.app/api/oneup/v1/products')
+                .then(response => {
+                    this.products = response.data;
+                    
+                })
+                .catch(error => {
+                  console.log(error);
+                });
         }
-    },
-    mounted() {
-    
-        axios
-          .get('https://6633c685f7d50bbd9b4aa0e7.mockapi.io/api/v1/Products')
-          .then(response => {
-            this.products = response.data;
-          })
-          .catch(error => {
-            console.log(error);
-          });
     }
-}
 </script>
 
 

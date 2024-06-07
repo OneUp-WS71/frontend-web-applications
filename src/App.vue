@@ -1,14 +1,22 @@
 <script setup>
 import Header from './components/header.vue'
+import Header2 from './components/header-log-out.vue'
+import Sidebar from './components/sidebar.vue';
+
 </script>
 
 <template>
   
-    <Header v-if="showHeader"></Header>
-    <RouterView></RouterView>
-    
-  
+  <div class="app-container">
+    <Sidebar v-show="showSidebar" />
 
+    <div class="main-content" :class="{ 'with-sidebar': showSidebar }">
+      <Header v-show="showHeader" />
+      <Header2 v-show="showHeader2" />
+      
+      <RouterView />
+    </div>
+  </div>
   <main>
     
   </main>
@@ -17,11 +25,36 @@ import Header from './components/header.vue'
 export default {
   computed: {
     showHeader() {
-      const routesWithoutHeader = ['/login','/Login','/Register','/register'];
-      return !routesWithoutHeader.includes(this.$route.path);
+      const allowedRoutes = [
+        '/',
+        '/products',
+        '/infoproducts'
+      ];
+      const currentPath = this.$route.path;
+      return allowedRoutes.includes(currentPath) && currentPath === currentPath.toLowerCase();
+    },
+    showHeader2() {
+      const allowedRoutes = [
+        '/payment-methods',
+        '/payment-confirm',
+        '/user-profile'
+      ];
+      const currentPath = this.$route.path;
+      return allowedRoutes.includes(currentPath) && currentPath === currentPath.toLowerCase();
+    },
+    showSidebar() {
+      const currentPath = this.$route.path;
+      return currentPath === '/user-profile' && currentPath === currentPath.toLowerCase();
+    }
+  },
+  watch: {
+    $route(to) {
+      if (to.path !== to.path.toLowerCase()) {
+        this.$router.replace('/page-not-found');
+      }
     }
   }
-}
+} 
 </script>
 
 <style >
@@ -49,6 +82,15 @@ export default {
       padding: 0!important;
       
   }  
-   
+  .app-container {
+    display: flex;
+  }   
+  .main-content {
+    flex: 1;
+  }
+
+  .main-content.with-sidebar {
+    margin-left: 250px; 
+  }
 
 </style>
