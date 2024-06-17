@@ -37,14 +37,19 @@ export default {
       const allowedRoutes = [
         '/payment-methods',
         '/payment-confirm',
-        '/user-profile'
+        '/user-profile',
+        '/patients'
       ];
       const currentPath = this.$route.path;
       return allowedRoutes.includes(currentPath) && currentPath === currentPath.toLowerCase();
     },
     showSidebar() {
+      const allowedRoutes=[
+        '/patients',
+        '/user-profile'
+      ]
       const currentPath = this.$route.path;
-      return currentPath === '/user-profile' && currentPath === currentPath.toLowerCase();
+      return allowedRoutes.includes(currentPath)&& currentPath === currentPath.toLowerCase();
     }
   },
   watch: {

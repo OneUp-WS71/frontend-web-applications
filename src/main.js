@@ -12,6 +12,8 @@ import Register from './views/register.vue'
 import Payment_methods from './views/payment-methods.vue'
 import Payment_confirm from './views/payment-confirm.vue'
 import User_profile from './views/user-profile.vue'
+import Patients from './views/patients.vue'
+import Report from './views/report.vue'
 import Page_not_found from './views/page-not-found.vue'
 
 
@@ -23,8 +25,13 @@ import Card from 'primevue/card';
 import InputText from 'primevue/inputtext';
 import FloatLabel from 'primevue/floatlabel';
 import Dropdown from 'primevue/dropdown';
+import DataTable from 'primevue/datatable';
+import Column from 'primevue/column';
+
 
 import axios from 'axios';
+import Message from 'primevue/message';
+
 
 const router = createRouter({
     history: createWebHistory(),
@@ -37,14 +44,20 @@ const router = createRouter({
         {path: '/payment-methods', name: 'Payment-methods', component:Payment_methods},
         {path: '/payment-confirm', name: 'Payment-confirm', component:Payment_confirm},
         {path: '/user-profile', name: 'User-profile', component:User_profile},
+        {path: '/patients',name:'Patients',component:Patients},
+        {path: '/report',name:'Report',component:Report},
         {path: '/:pathMatch(.*)*', name: 'NotFound', component: Page_not_found}
         
     ]
 })
+
 createApp(App)
 .use(router)
 .use(PrimeVue)
 
+.component('Column',Column)
+.component('DataTable',DataTable)
+.component('Message',Message)
 .component('SelectButton',SelectButton)
 .component('Button',Button)
 .component('Card',Card)

@@ -7,13 +7,13 @@
             <div class="cards">
                 <Card class="card">
                     <template #header>
-                        <img alt="user header":src="products.length > 0 ? products[1].productImageUrl : ''" /> <!--//cambiar aqui-->
+                        <img alt="user header" src="../assets/watch.png" /> <!--//cambiar aqui-->
                     </template>
-                    <template #title>{{ products.length > 0 ? products[1].productName : '' }}</template><!--//cambiar aqui-->
-                    <template #subtitle>{{ products.length > 0 ? products[1].productPrice : '' }}</template><!--//cambiar aqui-->
+                    <template #title>OneUp ElderlyCare</template><!--//cambiar aqui-->
+                    <template #subtitle>Extra Bass</template><!--//cambiar aqui-->
                     <template #content>
                         <p class="m-0">
-                            {{ products.length > 0 ? products[1].productDescription : '' }} <!--//cambiar aqui-->
+                            A smart bracelet that monitors the status of the person wearing it in real time <!--//cambiar aqui-->
                         </p>
                     </template>
                     <template #footer>
@@ -25,13 +25,13 @@
                 </Card>
                 <Card class="card">
                     <template #header>
-                        <img alt="user header":src="products.length > 0 ? products[1].productImageUrl : ''" /><!--//cambiar aqui-->
+                        <img alt="user header" src="../assets/watch.png" /><!--//cambiar aqui-->
                     </template>
-                    <template #title>{{ products.length > 0 ? products[1].productName : '' }}</template><!--//cambiar aqui-->
-                    <template #subtitle>{{ products.length > 0 ? products[1].productPrice : '' }}</template><!--//cambiar aqui-->
+                    <template #title>OneUp ElderlyCare</template><!--//cambiar aqui-->
+                    <template #subtitle>Extra Bass</template><!--//cambiar aqui-->
                     <template #content>
                         <p class="m-0">
-                            {{ products.length > 0 ? products[1].productDescription : '' }}<!--//cambiar aqui-->
+                            A smart bracelet that monitors the status of the person wearing it in real time<!--//cambiar aqui-->
                         </p>
                     </template>
                     <template #footer>
@@ -53,11 +53,6 @@
 <script>
 import axios from 'axios';
     export default {
-        data() {
-            return {
-                products: []
-            }
-        },
         methods: {
             handleCartClick() {
                 this.$router.push('/infoproducts');
@@ -66,18 +61,6 @@ import axios from 'axios';
                 this.$router.push('/payment-methods');
             }
         },
-        mounted() {
-
-            axios
-                .get('https://oneupbackend.zeabur.app/api/oneup/v1/products')
-                .then(response => {
-                    this.products = response.data;
-                    
-                })
-                .catch(error => {
-                  console.log(error);
-                });
-        }
     }
 </script>
 

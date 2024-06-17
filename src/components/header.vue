@@ -24,7 +24,7 @@
                 SignUpClick() {
                     this.$router.push('/register');
                 }
-        }
+            }
     }
 </script>
 <style scoped>

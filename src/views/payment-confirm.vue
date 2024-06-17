@@ -10,11 +10,11 @@
       <div class="details">
         <div class="cost">
           <h3>Total cost</h3>
-          <h3 class="amount">${{ products.length > 0 ? products[1].productPrice : '' }}</h3>
+          <h3 class="amount">$ 100.000</h3>
         </div>
         <div class="card-info">
           <h3>Debit card</h3>
-          <h3>{{ cards.length > 0 ? cards[0].cardNumber : '' }}</h3>
+          <h3>************ 1320</h3>
         </div>
         <div class="commerce-info">
           <h3>Commerce</h3>
@@ -41,46 +41,11 @@
 </template>
 
 <script>
-import axios from 'axios';
 export default {
   methods: {
     BackClick() {
         this.$router.push('/products');
     }
-  },
-  data() {
-        return {
-            cards: [
-
-            ],
-            products:[
-
-            ]
-        };
-    },
-  mounted() {
-      
-  axios
-      .get('https://oneupbackend.zeabur.app/api/oneup/v1/paymentmethod')
-      .then(response => {
-          this.cards = response.data;
-          this.cardNumbers = response.data.map(cards => cards.cardNumber);
-          console.log(this.cardNumbers);
-          console.log(this.cards);
-          
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  axios
-      .get('https://oneupbackend.zeabur.app/api/oneup/v1/products')
-      .then(response => {
-          this.products = response.data;
-          
-      })
-      .catch(error => {
-        console.log(error);
-      });    
   }
 }
 </script>
