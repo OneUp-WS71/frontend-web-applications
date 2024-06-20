@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Lista de Pacientes</h1>
-    <DataTable :value="patients" :paginator="true" :rows="10" :rowsPerPageOptions="[5, 10, 20]" style="margin: 100px;">
+    <DataTable :value="patients"   style="margin: 100px;">
     
       <Column field="name" header="Nombre"></Column>
       <Column field="age" header="Edad"></Column>
@@ -37,7 +37,7 @@ export default {
         const username = localStorage.getItem('username');
         if (username) {
           const patientsData = await userService.getPatients(username);
-          console.log('Patients Data:', patientsData); // Verifica los datos de los pacientes
+          console.log('Patients Data:', patientsData); 
           patients.value = patientsData;
         } else {
           console.error('Username not found in localStorage');

@@ -1,18 +1,13 @@
 <template>
   <div class="sidebar">
-    <Button label="Agregar nuevo paciente" class="p-button-rounded add-patient-button" icon="pi pi-plus" @click="showAddPatientDialog = true" />
+    <Button label="Agregar nuevo paciente" class="p-button-rounded add-patient-button" icon="pi pi-plus" @click="onAddPatientClick" />
     <ul class="menu">
       <li class="menu-item"><i class="pi pi-home"></i><h3>Dashboard</h3></li>
-      <li class="menu-section">ANALYTICS</li>
-      <li class="menu-item"><i class="pi pi-chart-line"></i><h3>Performance</h3></li>
       <li class="menu-section">SUPPORT</li>
-      <li class="menu-item"><i class="pi pi-ticket"></i><h3>Tickets</h3><h3 class="badge">15</h3></li>
       <li class="menu-item" @click="ProfileClick"><i class="pi pi-user"></i><h3>Profile</h3></li>
       <li class="menu-item" @click="PatientsClick"><i class="pi pi-users"></i><h3>Patients</h3></li>
       <li class="menu-section">SHOP</li>
       <li class="menu-item" @click="ProductsClick"><i class="pi pi-folder"></i><h3>Products</h3></li>
-      <li class="menu-item"><i class="pi pi-bell"></i><h3>Orders</h3></li>
-      <li class="menu-item"><i class="pi pi-file"></i><h3>Report</h3></li>
     </ul>
     <div class="sidebar-footer">
       <a href="#" class="footer-item"><i class="pi pi-cog"></i><h3>Settings</h3></a>
@@ -42,6 +37,13 @@
         <Button label="Agregar" icon="pi pi-check" @click="addPatient" />
       </div>
     </Dialog>
+
+    <!-- Confirmation Dialog -->
+    <Dialog header="Confirmación" v-model:visible="showConfirmationDialog" modal>
+      <p>¿Está seguro que quiere eliminar el paciente anterior?</p>
+      <Button label="Sí" icon="pi pi-check" @click="confirmReplacePatient" />
+      <Button label="No" icon="pi pi-times" @click="cancelReplacePatient" class="p-button-secondary" />
+    </Dialog>
   </div>
 </template>
 
@@ -64,12 +66,14 @@ export default {
   setup() {
     const router = useRouter();
     const showAddPatientDialog = ref(false);
+    const showConfirmationDialog = ref(false);
     const newPatient = ref({
       name: '',
       age: null,
       direction: '',
       disease: ''
     });
+    const existingPatient = ref(null);
 
     const ProductsClick = () => {
       router.push('/products');
@@ -83,6 +87,23 @@ export default {
       router.push('/user-profile');
     };
 
+    const onAddPatientClick = () => {
+      if (existingPatient.value) {
+        showConfirmationDialog.value = true;
+      } else {
+        showAddPatientDialog.value = true;
+      }
+    };
+
+    const confirmReplacePatient = () => {
+      showConfirmationDialog.value = false;
+      showAddPatientDialog.value = true;
+    };
+
+    const cancelReplacePatient = () => {
+      showConfirmationDialog.value = false;
+    };
+
     const addPatient = async () => {
       try {
         const username = localStorage.getItem('username');
@@ -90,6 +111,7 @@ export default {
           const userData = await userService.getUserData(username);
           const userId = userData.id;
           await userService.addPatient(userId, newPatient.value);
+          existingPatient.value = newPatient.value;
           showAddPatientDialog.value = false;
           newPatient.value = { name: '', age: null, direction: '', disease: '' };
           window.location.reload();
@@ -103,10 +125,15 @@ export default {
 
     return {
       showAddPatientDialog,
+      showConfirmationDialog,
       newPatient,
+      existingPatient,
       ProductsClick,
       PatientsClick,
       ProfileClick,
+      onAddPatientClick,
+      confirmReplacePatient,
+      cancelReplacePatient,
       addPatient
     };
   },

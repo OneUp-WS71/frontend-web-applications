@@ -29,6 +29,9 @@ import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 
 
+
+
+
 import axios from 'axios';
 import Message from 'primevue/message';
 
@@ -54,6 +57,7 @@ const router = createRouter({
 createApp(App)
 .use(router)
 .use(PrimeVue)
+
 
 .component('Column',Column)
 .component('DataTable',DataTable)

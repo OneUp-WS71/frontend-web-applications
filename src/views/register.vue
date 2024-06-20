@@ -17,36 +17,16 @@
               <InputText v-model="formData.password" type="password" />
               <label for="password" class="normal">Password</label>
             </FloatLabel>
-            <FloatLabel style="margin-top: 1rem;">
-              <InputText v-model="formData.name" />
-              <label for="name" class="normal">Name</label>
-            </FloatLabel>
-            <FloatLabel style="margin-top: 1rem;">
-              <InputText v-model="formData.lastname" />
-              <label for="lastname" class="normal">Lastname</label>
-            </FloatLabel>
-          </div>
-          <div class="form-column">
+     
             <FloatLabel style="margin-top: 1rem;">
               <InputText v-model="formData.email" />
               <label for="email" class="normal">Email</label>
             </FloatLabel>
-            <FloatLabel style="margin-top: 1rem;">
-              <InputText v-model="formData.phone" />
-              <label for="phone" class="normal">Phone</label>
-            </FloatLabel>
-            <FloatLabel style="margin-top: 1rem;">
-              <InputText v-model="formData.type" />
-              <label for="type" class="normal">Type</label>
-            </FloatLabel>
-            <FloatLabel style="margin-top: 1rem;">
-              <InputText v-model="formData.gender" />
-              <label for="gender" class="normal">Gender</label>
-            </FloatLabel>
           </div>
+         
         </div>
         <div class="buttons">
-          <Button style="margin-top: 1rem;width: 150px;border-radius: 100px;text-align: center;" class="buy-button" label="Log In" />
+          <Button style="margin-top: 1rem;width: 150px;border-radius: 100px;text-align: center; margin-right: 20px;" class="buy-button" label="Log In" />
           <Button style="margin-top: 1rem;border-radius: 100px;text-align: center;" class="buy-button" label="Create Account" @click="registerUser" />
         </div>
       </div>
@@ -62,12 +42,8 @@
         formData: {
           username: '',
           password: '',
-          name: '',
-          lastname: '',
-          email: '',
-          phone: '',
-          type: '',
-          gender: ''
+     
+          email: ''
         }
       };
     },
@@ -100,7 +76,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 600px;
+    width: 400px;
     background-color: white;
     border-radius: 10px;
     color: var(--indigo-600);
@@ -119,18 +95,18 @@
   }
   .form {
     display: flex;
-    justify-content: space-between;
-    width: 100%;
+    justify-content: center;
+    
     margin-bottom: 20px;
   }
   .form-column {
-    width: 45%; 
+    width: 100%; 
   }
   .buttons {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 75%;
+    width: 100%;
   }
   </style>
   
