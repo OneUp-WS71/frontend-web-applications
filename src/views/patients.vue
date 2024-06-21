@@ -1,12 +1,18 @@
 <template>
   <div>
     <h1>Lista de Pacientes</h1>
-    <DataTable :value="patients"   style="margin: 100px;">
-    
-      <Column field="name" header="Nombre"></Column>
-      <Column field="age" header="Edad"></Column>
-      <Column field="direction" header="Dirección"></Column>
-      <Column field="disease" header="Enfermedad"></Column>
+    <DataTable :value="patients" style="margin: 100px;">
+      <Column field="name" header="Nombre">
+        <template #body="slotProps">
+          <a @click="onPatientClick(slotProps.data.id)" style="cursor: pointer; color: blue;">
+            {{ slotProps.data.name }}
+          </a>
+        </template>
+      </Column>
+      <Column field="address" header="address"></Column>
+      <Column field="date" header="date"></Column>
+      <Column field="weight" header="weight"></Column>
+      <Column field="height" header="height"></Column>
       <Column header="Acciones">
         <template #body="slotProps">
           <Button icon="pi pi-trash" class="p-button-rounded p-button-danger" @click="onDeletePatient(slotProps.data.id)" />
@@ -18,6 +24,7 @@
 
 <script>
 import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router'; // Importa useRouter para la navegación
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import Button from 'primevue/button'; // Importa el componente Button
@@ -31,6 +38,7 @@ export default {
   },
   setup() {
     const patients = ref([]);
+    const router = useRouter(); // Crea una instancia de router
 
     const fetchPatients = async () => {
       try {
@@ -62,6 +70,11 @@ export default {
       }
     };
 
+    const onPatientClick = (patientId) => {
+      localStorage.setItem('patientId', patientId); // Guarda el ID del paciente en localStorage
+      router.push('/patient-info'); // Redirige a la ruta /patient-info
+    };
+
     onMounted(() => {
       fetchPatients();
     });
@@ -69,6 +82,7 @@ export default {
     return {
       patients,
       onDeletePatient,
+      onPatientClick, // Asegúrate de devolver onPatientClick
     };
   },
 };

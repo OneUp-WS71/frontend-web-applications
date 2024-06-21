@@ -13,7 +13,9 @@ import Payment_methods from './views/payment-methods.vue'
 import Payment_confirm from './views/payment-confirm.vue'
 import User_profile from './views/user-profile.vue'
 import Patients from './views/patients.vue'
+import Patient_info from './views/patient-info.vue'
 import Report from './views/report.vue'
+import Dashboard from './views/dashboard.vue';
 import Page_not_found from './views/page-not-found.vue'
 
 
@@ -32,7 +34,7 @@ import Column from 'primevue/column';
 
 
 
-import axios from 'axios';
+import axios, { formToJSON } from 'axios';
 import Message from 'primevue/message';
 
 
@@ -48,7 +50,9 @@ const router = createRouter({
         {path: '/payment-confirm', name: 'Payment-confirm', component:Payment_confirm},
         {path: '/user-profile', name: 'User-profile', component:User_profile},
         {path: '/patients',name:'Patients',component:Patients},
+        {path: '/patient-info',name:'Patient-info',component:Patient_info},
         {path: '/report',name:'Report',component:Report},
+        {path: '/dashboard',name:'Dashboard',component:Dashboard},
         {path: '/:pathMatch(.*)*', name: 'NotFound', component: Page_not_found}
         
     ]

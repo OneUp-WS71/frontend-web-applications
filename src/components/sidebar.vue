@@ -2,7 +2,7 @@
   <div class="sidebar">
     <Button label="Agregar nuevo paciente" class="p-button-rounded add-patient-button" icon="pi pi-plus" @click="onAddPatientClick" />
     <ul class="menu">
-      <li class="menu-item"><i class="pi pi-home"></i><h3>Dashboard</h3></li>
+      <li class="menu-item" @click="DashboardClick"><i class="pi pi-home"></i><h3>Dashboard</h3></li>
       <li class="menu-section">SUPPORT</li>
       <li class="menu-item" @click="ProfileClick"><i class="pi pi-user"></i><h3>Profile</h3></li>
       <li class="menu-item" @click="PatientsClick"><i class="pi pi-users"></i><h3>Patients</h3></li>
@@ -83,6 +83,11 @@ export default {
       router.push('/patients');
     };
 
+    const DashboardClick = () => {
+      router.push('/dashboard');
+    };
+
+
     const ProfileClick = () => {
       router.push('/user-profile');
     };
@@ -130,6 +135,7 @@ export default {
       existingPatient,
       ProductsClick,
       PatientsClick,
+      DashboardClick,
       ProfileClick,
       onAddPatientClick,
       confirmReplacePatient,

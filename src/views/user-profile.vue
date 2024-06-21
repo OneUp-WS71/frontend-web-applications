@@ -1,6 +1,6 @@
 <template>
   <div class="profile-container">
-    <h1>Hola {{ user.name }}</h1>
+    <h1>Hola {{ user.username }}</h1>
     <div class="profile-card">
       <img class="profile-pic" :src="previewImage || 'https://via.placeholder.com/150'" alt="Profile Picture">
       <div v-if="isEditing">

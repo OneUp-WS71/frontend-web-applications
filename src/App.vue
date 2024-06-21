@@ -38,7 +38,9 @@ export default {
         '/payment-methods',
         '/payment-confirm',
         '/user-profile',
-        '/patients'
+        '/patients',
+        '/dashboard',
+        '/patient-info'
       ];
       const currentPath = this.$route.path;
       return allowedRoutes.includes(currentPath) && currentPath === currentPath.toLowerCase();
@@ -46,7 +48,10 @@ export default {
     showSidebar() {
       const allowedRoutes=[
         '/patients',
-        '/user-profile'
+        '/user-profile',
+        '/dashboard',
+        '/patient-info'
+
       ]
       const currentPath = this.$route.path;
       return allowedRoutes.includes(currentPath)&& currentPath === currentPath.toLowerCase();
