@@ -9,6 +9,7 @@
             </a>
           </template>
         </Column>
+        <Column field="id" :header="$t('patientList.columns.id')" sortable></Column>
         <Column field="address" :header="$t('patientList.columns.address')" sortable></Column>
         <Column field="date" :header="$t('patientList.columns.date')" sortable></Column>
         <Column field="phone" :header="$t('patientList.columns.phone')" sortable></Column>
