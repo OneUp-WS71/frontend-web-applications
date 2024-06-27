@@ -40,8 +40,10 @@ const messages = {
       }
     },
     patientList: {
+        
         title: 'Patient List',
         columns: {
+          id: 'Id',
           name: 'Name',
           address: 'Address',
           date: 'Date',
@@ -195,8 +197,10 @@ const messages = {
       }
     },
     patientList: {
+        
         title: 'Lista de Pacientes',
         columns: {
+          id: 'Id',
           name: 'Nombre',
           address: 'Dirección',
           date: 'Fecha',
