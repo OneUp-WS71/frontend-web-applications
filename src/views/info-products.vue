@@ -1,65 +1,39 @@
-<template >
+<template>
     <div class="titulo-container">
-        <h1>Information about the product</h1>
+        <h1>{{ $t('productInfo.pageTitle') }}</h1>
     </div>
     <div class="products-container">
         <div class="img-container">
-            <img alt="reloj":src="products.length > 0 ? products[1].productImageUrl : ''" />
+            <img alt="reloj" src="../assets/watch.png" />
         </div>
         <div class="titulo2-container">
-            <h1 class="bold">{{ products.length > 0 ? products[1].productName : '' }}</h1>
+            <h1 class="bold">{{ $t('productInfo.productName') }}</h1>
             <div class="info-container">
                 <Card class="card1">
-                    <template #title>Specifications</template>
+                    <template #title>{{ $t('productInfo.card1Title') }}</template>
                     <template #content>
-                        <p class="m-0">
-                            {{ products.length > 0 ? products[1].productDescription : '' }}
-                        </p>
+                        <p class="m-0">{{ $t('productInfo.card1Content') }}</p>
                     </template>
                 </Card>
                 <Card class="card2">
-                    <template #title>${{ products.length > 0 ? products[1].productPrice : '' }}</template>
+                    <template #title>{{ $t('productInfo.card2Title') }}</template>
                     <template #content>
-                        <p class="m-0">
-                            <i class="pi pi-truck"></i> Home Delivery
-                        </p>
-                        <p class="m-0">
-                            <i class="pi pi-search"></i> Order status monitoring
-
-                        </p>
+                        <p class="m-0" v-html="$t('productInfo.card2Content1')"></p>
+                        <p class="m-0" v-html="$t('productInfo.card2Content2')"></p>
                     </template>
                     <template #footer>
                         <div class="buttons">
-                            <Button class="cart-button" icon="pi pi-shopping-cart" aria-label="Cart" @click="handleBuyClick"/>
-                            <Button class="buy-button" icon="pi pi-angle-right" label="Buy Now" @click="handleBuyClick"/>
+                            <Button class="cart-button" icon="pi pi-shopping-cart" aria-label="Cart" :label="$t('productInfo.buttonCart')"  @click="handleBuyClick"/>
+                            <Button class="buy-button" icon="pi pi-angle-right" :label="$t('productInfo.buttonBuyNow')"  @click="handleBuyClick"/>
                         </div>
                     </template>
                 </Card>
             </div>
         </div>
     </div>
-    
 </template>
 <script>
-import axios from 'axios';
 export default {
-    data() {
-        return {
-            products: []
-        }
-    },
-    mounted() {
-
-    axios
-        .get('https://oneupbackend.zeabur.app/api/oneup/v1/products')
-        .then(response => {
-            this.products = response.data;
-            
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    },
     methods: {
         handleBuyClick(){
             this.$router.push('/payment-methods');

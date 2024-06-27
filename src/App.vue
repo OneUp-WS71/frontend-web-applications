@@ -26,9 +26,9 @@ export default {
   computed: {
     showHeader() {
       const allowedRoutes = [
-        '/',
-        '/products',
-        '/infoproducts'
+      
+       
+        
       ];
       const currentPath = this.$route.path;
       return allowedRoutes.includes(currentPath) && currentPath === currentPath.toLowerCase();
@@ -37,14 +37,31 @@ export default {
       const allowedRoutes = [
         '/payment-methods',
         '/payment-confirm',
-        '/user-profile'
+        '/user-profile',
+        '/patients',
+        '/dashboard',
+        '/patient-info',
+        '/location',
+        '/products',
+        '/infoproducts'
       ];
       const currentPath = this.$route.path;
       return allowedRoutes.includes(currentPath) && currentPath === currentPath.toLowerCase();
     },
     showSidebar() {
+      const allowedRoutes=[
+      '/payment-methods',
+        '/patients',
+        '/user-profile',
+        '/dashboard',
+        '/patient-info',
+        '/location',
+        '/products',
+        '/infoproducts',
+        '/payment-confirm'
+      ]
       const currentPath = this.$route.path;
-      return currentPath === '/user-profile' && currentPath === currentPath.toLowerCase();
+      return allowedRoutes.includes(currentPath)&& currentPath === currentPath.toLowerCase();
     }
   },
   watch: {
@@ -64,6 +81,7 @@ export default {
   }
   h1, h2, h3, h4, h5{
     font-weight: 300 !important;
+   
   }
   .normal{
     font-weight: 300 !important;
@@ -88,7 +106,7 @@ export default {
   .main-content {
     flex: 1;
   }
-
+ 
   .main-content.with-sidebar {
     margin-left: 250px; 
   }

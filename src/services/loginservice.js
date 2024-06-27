@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-  baseURL: 'https://oneupbackend.zeabur.app/api/oneup/v1',
+ //baseURL:'http://localhost:8080/api/oneup/v1',
+  baseURL: 'https://oneupmain.zeabur.app/api/oneup/v1',
   headers: {
     'Content-Type': 'application/json'
   }

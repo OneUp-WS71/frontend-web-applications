@@ -1,24 +1,22 @@
 <template>
     <div class="main-container">
-        <div class="column left-column">
-            <Button class="back-button" label="Return" @click="BackClick"/>
-        </div>
+        
         <div class="column middle-column">
             <div class="credit-card-container">
                 <div class="img-container">
                     <img alt="user header" src="../assets/Logo_negro.png"/>
                 </div>
                 <div class="credit-card-info same-size">
-                    <i class="pi pi-credit-card"></i><h3>{{ cards.length > 0 ? cards[0].cardNumber : '' }}</h3> 
+                    <i class="pi pi-credit-card"></i><h3>{{ $t('paymentMethods.cardInfo') }}</h3> 
                 </div>
                 <br>
                 <div class="dropdown same-size">
-                    <Dropdown v-model="selectedCards" :options="cardNumbers" placeholder="Select a Card" class="w-full md:w-14rem same-size" />
+                    <Dropdown v-model="selectedCard" :options="cardOptions" optionLabel="label" :placeholder="$t('paymentMethods.selectCardPlaceholder')" class="w-full md:w-14rem same-size" />
                 </div>
                 <br>
                 <div class="buttons">
-                    <Button class="continue-button" label="Continue" @click="ContinueClick"/>
-                    <Button class="cancel-button" label="Cancel" @click="BackClick"/>
+                    <Button class="continue-button" :label="$t('paymentMethods.continueButton')" @click="ContinueClick"/>
+                    <Button class="cancel-button" :label="$t('paymentMethods.cancelButton')" @click="BackClick"/>
                 </div>
             </div>
         </div>
@@ -28,11 +26,11 @@
                     <img alt="user header" src="../assets/Logo_negro.png"class="summary-image"/>
                 </div>
                 <div class="content">
-                    <h2>{{ products.length > 0 ? products[1].productName : '' }}</h2>
-                    <h3>(1) unit</h3>
+                    <h2>{{ $t('paymentMethods.purchaseSummary.title') }}</h2>
+                    <h3>{{ $t('paymentMethods.purchaseSummary.quantity') }}</h3>
                     <div class="total">
-                        <h3>Total Compra</h3>
-                        <h3>${{ products.length > 0 ? products[1].productPrice : '' }}</h3>
+                        <h3>{{ $t('paymentMethods.purchaseSummary.totalLabel') }}</h3>
+                        <h3>{{ $t('paymentMethods.purchaseSummary.totalPrice') }}</h3>
                     </div>
                 </div>
             </div>
@@ -41,8 +39,13 @@
 </template>
 
 <script>
-import axios from 'axios';
 export default {
+    data() {
+        return {
+            selectedCard: null,
+            cardOptions: []
+        };
+    },
     methods: {
         ContinueClick() {
             this.$router.push('/payment-confirm');
@@ -50,44 +53,15 @@ export default {
         BackClick() {
             this.$router.push('/products');
         },
+        updateCardOptions() {
+            this.cardOptions = this.$i18n.messages[this.$i18n.locale].paymentMethods.cards.map(card => ({ label: card.name, value: card }));
+        }
     },
-    data() {
-        return {
-            selectedCards: null,
-            cards: [
-
-            ],
-            cardNumbers: [
-                
-            ],
-            products:[
-
-            ]
-        };
+    created() {
+        this.updateCardOptions(); // Llamar a la función una vez al crear el componente
     },
-    mounted() {
-
-    axios
-        .get('https://oneupbackend.zeabur.app/api/oneup/v1/paymentmethod')
-        .then(response => {
-            this.cards = response.data;
-            this.cardNumbers = response.data.map(cards => cards.cardNumber);
-            console.log(this.cardNumbers);
-            console.log(this.cards);
-            
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    axios
-        .get('https://oneupbackend.zeabur.app/api/oneup/v1/products')
-        .then(response => {
-            this.products = response.data;
-            
-        })
-        .catch(error => {
-          console.log(error);
-        });    
+    watch: {
+        '$i18n.locale': 'updateCardOptions' // Actualizar opciones cuando cambia el idioma
     }
 }
 </script>
@@ -106,14 +80,14 @@ export default {
     flex: 1;
 }
 .left-column{
-    max-width: 100px;
+    max-width: 150px;
 }
 .middle-column {
-    margin: 0 600px; 
+   margin-left: 50px;
 }
 .right-column{
-    margin-left: -200px;
-    margin-top: 100px;
+    margin-left: 100px;
+    margin-top: 0px;
 }
 .credit-card-container,
 .purchase-summary-container {

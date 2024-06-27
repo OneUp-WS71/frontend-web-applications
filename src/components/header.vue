@@ -5,7 +5,7 @@
                 <img alt="reloj" src="../assets/Logo_negro.png" />
             </div>
             <div class="title">
-                <h1>OneUp Products</h1>
+                <h2 class="normal">OneUp Products</h2>
             </div>
         </div>
         
@@ -24,7 +24,7 @@
                 SignUpClick() {
                     this.$router.push('/register');
                 }
-        }
+            }
     }
 </script>
 <style scoped>

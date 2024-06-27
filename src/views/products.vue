@@ -1,88 +1,66 @@
 <template>
     <div class="pagina">
-        <div class="card-container">
-            <div class="title">
-                <h1>Elderly Care :  Your smart partner for a healthy and conscious lifestyle</h1>
-            </div>
-            <div class="cards">
-                <Card class="card">
-                    <template #header>
-                        <img alt="user header":src="products.length > 0 ? products[1].productImageUrl : ''" /> <!--//cambiar aqui-->
-                    </template>
-                    <template #title>{{ products.length > 0 ? products[1].productName : '' }}</template><!--//cambiar aqui-->
-                    <template #subtitle>{{ products.length > 0 ? products[1].productPrice : '' }}</template><!--//cambiar aqui-->
-                    <template #content>
-                        <p class="m-0">
-                            {{ products.length > 0 ? products[1].productDescription : '' }} <!--//cambiar aqui-->
-                        </p>
-                    </template>
-                    <template #footer>
-                        <div class="buttons">
-                            <Button class="cart-button" icon="pi pi-shopping-cart" aria-label="Cart" @click="handleBuyClick"/>
-                            <Button class="buy-button" icon="pi pi-angle-right" label="More Info" @click="handleCartClick"/>
-                        </div>
-                    </template>
-                </Card>
-                <Card class="card">
-                    <template #header>
-                        <img alt="user header":src="products.length > 0 ? products[1].productImageUrl : ''" /><!--//cambiar aqui-->
-                    </template>
-                    <template #title>{{ products.length > 0 ? products[1].productName : '' }}</template><!--//cambiar aqui-->
-                    <template #subtitle>{{ products.length > 0 ? products[1].productPrice : '' }}</template><!--//cambiar aqui-->
-                    <template #content>
-                        <p class="m-0">
-                            {{ products.length > 0 ? products[1].productDescription : '' }}<!--//cambiar aqui-->
-                        </p>
-                    </template>
-                    <template #footer>
-                        <div class="buttons">
-                            <Button class="cart-button" icon="pi pi-shopping-cart" aria-label="Cart" @click="handleBuyClick" />
-                            <Button class="buy-button" icon="pi pi-angle-right" label="More Info" @click="handleCartClick" />
-                        </div>
-                    </template>
-                </Card>
-            </div>
+      <div class="card-container">
+        <div class="cards">
+          <Card class="card">
+            <template #header>
+              <img alt="user header" src="../assets/watch.png" />
+            </template>
+            <template #title>{{ $t('home.title') }}</template>
+            <template #subtitle>{{ $t('home.subtitle') }}</template>
+            <template #content>
+              <p class="m-0">{{ $t('home.content') }}</p>
+            </template>
+            <template #footer>
+              <div class="buttons">
+                <Button class="cart-button" icon="pi pi-shopping-cart" aria-label="Cart" @click="handleBuyClick"/>
+                <Button class="buy-button" icon="pi pi-angle-right" :label="$t('home.buttonInfo')" @click="handleCartClick"/>
+              </div>
+            </template>
+          </Card>
+          <!-- Segunda tarjeta -->
+          <Card class="card">
+            <template #header>
+              <img alt="user header" src="../assets/watch.png" />
+            </template>
+            <template #title>{{ $t('home.title') }}</template>
+            <template #subtitle>{{ $t('home.subtitle') }}</template>
+            <template #content>
+              <p class="m-0">{{ $t('home.content') }}</p>
+            </template>
+            <template #footer>
+              <div class="buttons">
+                <Button class="cart-button" icon="pi pi-shopping-cart" aria-label="Cart" @click="handleBuyClick"/>
+                <Button class="buy-button" icon="pi pi-angle-right" :label="$t('home.buttonInfo')" @click="handleCartClick"/>
+              </div>
+            </template>
+          </Card>
         </div>
-
-        <div class="image-container">
-            <img alt="Abuelos" src="../assets/ProductsImage.png" />
-        </div>
+      </div>
+      <div class="image-container">
+        <img alt="Abuelos" src="../assets/ProductsImage.png" />
+      </div>
     </div>
-</template>
-
-<script>
-import axios from 'axios';
-    export default {
-        data() {
-            return {
-                products: []
-            }
-        },
-        methods: {
-            handleCartClick() {
-                this.$router.push('/infoproducts');
-            },
-            handleBuyClick(){
-                this.$router.push('/payment-methods');
-            }
-        },
-        mounted() {
-
-            axios
-                .get('https://oneupbackend.zeabur.app/api/oneup/v1/products')
-                .then(response => {
-                    this.products = response.data;
-                    
-                })
-                .catch(error => {
-                  console.log(error);
-                });
-        }
-    }
-</script>
+  </template>
+  
+  <script>
+  import axios from 'axios';
+  
+  export default {
+    methods: {
+      handleCartClick() {
+        this.$router.push('/infoproducts');
+      },
+      handleBuyClick() {
+        this.$router.push('/payment-methods');
+      },
+    },
+  };
+  </script>
 
 
 <style scoped>
+
 
     .pagina {
         display: flex;
@@ -93,9 +71,8 @@ import axios from 'axios';
     }
     .title{
         text-align: center;
-        margin-left: 5%;
-        margin-top: 10%;
-        margin-bottom: -5%;
+             margin-top: 10%;
+       
         
     }
     .card-container {
