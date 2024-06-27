@@ -228,6 +228,7 @@ export default {
 
     const closeSuccessDialog = () => {
       showSuccessDialog.value = false;
+      window.location.reload();
     };
 
     const changeLanguage = (language) => {
