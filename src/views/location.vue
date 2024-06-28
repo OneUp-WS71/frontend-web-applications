@@ -125,11 +125,18 @@ export default {
 };
 </script>
 
-<style scoped>
+<style >
 .map-container {
-  margin-top: 130px;
-  height: 550px; /* Ajusta la altura del mapa según tus necesidades */
-  width: 90%; /* Opcional: ajusta el ancho del mapa */
+  margin-top: 120px;
+  width: 97%;
+  height: 80vh; /* Ajusta la altura según sea necesario */
+}
+
+@media (max-width: 768px) {
+  .map-container {
+    margin-top: 50px;
+    height: 60vh; /* Ajusta la altura para dispositivos más pequeños */
+  }
 }
 </style>
   
