@@ -3,10 +3,9 @@
     <br><br><br><br>
     <!-- Tarjeta para la última frecuencia cardíaca -->
     <v-card
-      class="mx-auto"
+      class="card-align"
       color="surface-light"
       max-width="600"
-      style="display: grid; grid-template-columns: auto 1fr; margin: 20px;"
     >
       <template v-slot:prepend>
         <svg
@@ -29,10 +28,9 @@
 
     <!-- Tarjeta para la última frecuencia respiratoria -->
     <v-card 
-      class="mx-auto"
+      class="card-align"
       color="surface-light"
       max-width="600"
-      style="display: grid; grid-template-columns: auto 1fr; margin: 20px;"
     >
       <template v-slot:prepend>
         <svg
@@ -40,7 +38,7 @@
           viewBox="0 0 24 24"
           @click="openDialog('breathingFrequency')"
         >
-          <path d="M12,4C14.8,4 17,6.2 17,9L17,18C17,18.9 16.1,19.8 15,20L14,20C12.9,20 12,19.1 12,18L12,9C12,8.5 12.5,8 13,8C13.5,8 14,8.5 14,9L14,18C14,18.6 14.4,19 15,19L15,9C15,5.7 13.8,4 12,4L12,4M9,9L9,18C9,18.6 8.6,19 8,19L8,20C7.1,20 6.2,19.1 6.2,18L6,9C6,8.5 6.5,8 7,8C7.5,8 8,8.5 8,9L8,18C8,18.6 8.4,19 9,19L9,9C9,5.7 10.2,4 12,4L12,4"/>
+          <path d="M12,4C14.8,4 17,6.2 17,9L17,18C17,18.9 16.1,19.8 15,20L14,20C12.9,20 12,19.1 12,18L12,9C12,8.5 12.5,8 13,8C13.5,8 14,8.5 14,9L14,18C14,18.6 14.4,19 15,19L15,9C15,5.7 13.8,4 12,4L12,4M9,9L9,18C9,18.6 8.6,19 8,19L8,20C7.1,20 6.2,19.1 6.2,18L6,9C6,8.5 6.5,8 7,8C7.5,8 8,8.5 8,9L8,18C8,18.6 8.4,19 9,19L9,9C9,5.7 10.2,4 12,4L12,4"/>
         </svg>
       </template>
 
@@ -55,10 +53,9 @@
 
     <!-- Tarjeta para la última temperatura -->
     <v-card
-      class="mx-auto"
+      class="card-align"
       color="surface-light"
       max-width="600"
-      style="display: grid; grid-template-columns: auto 1fr; margin: 20px;"
     >
       <template v-slot:prepend>
         <svg
@@ -66,7 +63,7 @@
           viewBox="0 0 24 24"
           @click="openDialog('temperature')"
         >
-          <path d="M15 17a3 3 0 01-2 2.83V21a1 1 0 01-2 0v-1.17A3 3 0 1115 17M11 5v6.29a5 5 0 000 9.42V21a3 3 0 006 0v-1.29a5 5 0 000-9.42V5a4 4 0 00-8 0z"/>    
+          <path d="M15 17a3 3 0 01-2 2.83V21a1 1 0 01-2 0v-1.17A3 3 0 1115 17M11 5v6.29a5 5 0 000 9.42V21a3 3 0 006 0v-1.29a5 5 0 000-9.42V5a4 4 0 00-8 0z"/>    
         </svg>
       </template>
 
@@ -232,17 +229,12 @@ export default {
   font-weight: bold;
 }
 
-.mx-auto {
-  margin-left: auto;
-  margin-right: auto;
+.card-align {
+  margin-bottom: 20px;
 }
 
 .elevation-1 {
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.v-card {
-  margin-bottom: 20px;
 }
 
 .v-dialog {
@@ -288,4 +280,3 @@ export default {
   height: 200px;
 }
 </style>
-

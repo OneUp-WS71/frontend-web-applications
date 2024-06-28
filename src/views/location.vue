@@ -127,9 +127,10 @@ export default {
 
 <style >
 .map-container {
-  margin-top: 120px;
+  margin-top: 150px;
+  margin-left: 20px;
   width: 97%;
-  height: 80vh; /* Ajusta la altura según sea necesario */
+  height: 70vh; /* Ajusta la altura según sea necesario */
 }
 
 @media (max-width: 768px) {

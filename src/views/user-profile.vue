@@ -6,19 +6,19 @@
       <div class="profile-info">
         <div class="info-row">
           <label>{{$t('name')}}</label>
-          <InputText v-model="user.name" readonly />
+          <h3>{{ user.name }}</h3>
         </div>
         <div class="info-row">
           <label>{{$t('lastname')}}</label>
-          <InputText v-model="user.lastname" readonly />
+          <h3>{{ user.lastname }}</h3>
         </div>
         <div class="info-row">
           <label>{{$t('address')}}</label>
-          <InputText v-model="user.email" readonly />
+          <h3>{{ user.email }}</h3>
         </div>
         <div class="info-row">
           <label>{{$t('phone')}}</label>
-          <InputText v-model="user.phone" readonly />
+          <h3>{{ user.phone }}</h3>
         </div>
       </div>
     </div>
@@ -31,13 +31,9 @@
 
 <script>
 import { ref, onMounted } from 'vue';
-import InputText from 'primevue/inputtext';
 import userService from '@/services/userservice';
 
 export default {
-  components: {
-    InputText,
-  },
   setup() {
     const user = ref({
       name: '',
@@ -50,7 +46,7 @@ export default {
     });
 
     const previewImage = ref('');
-    const userLoaded = ref(false); // Flag para indicar si los datos del usuario están cargados
+    const userLoaded = ref(false);
 
     const fetchUserData = async () => {
       try {
@@ -62,7 +58,7 @@ export default {
             image: userData.image ? `data:image/jpeg;base64,${userData.image}` : '',
           };
           previewImage.value = user.value.image;
-          userLoaded.value = true; // Marcamos que los datos del usuario han sido cargados
+          userLoaded.value = true;
         } else {
           console.error('Username not found in localStorage');
         }
@@ -83,6 +79,7 @@ export default {
   },
 };
 </script>
+
 <style scoped>
 .profile-container {
   display: flex;
@@ -130,6 +127,13 @@ export default {
   font-weight: bold;
 }
 
+.info-row span {
+  padding: 10px 15px;
+
+  border-radius: 4px;
+  display: block;
+}
+
 .edit-button {
   margin-top: 20px;
   background-color: #5a67d8;
@@ -163,7 +167,7 @@ export default {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  display: inline-block; /* Añadido */
+  display: inline-block;
 }
 
 .custom-file-label:hover {

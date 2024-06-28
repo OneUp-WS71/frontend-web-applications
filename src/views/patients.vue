@@ -111,6 +111,9 @@
         try {
           await userService.deletePatient(patientId);
           patients.value = patients.value.filter(patient => patient.id !== patientId);
+          setTimeout(() => {
+            location.reload();
+          }, 3000);
         } catch (error) {
           console.error('Error deleting patient:', error);
         }
