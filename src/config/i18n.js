@@ -12,6 +12,7 @@ const messages = {
       location: 'Location',
       settings: 'Settings',
       logout: 'Logout',
+      userRole: 'User: caregiver',
       addPatientDialog: {
         header: 'Add Patient',
         name: 'Name',
@@ -40,8 +41,10 @@ const messages = {
       }
     },
     patientList: {
+        
         title: 'Patient List',
         columns: {
+          id: 'Id',
           name: 'Name',
           address: 'Address',
           date: 'Date',
@@ -167,6 +170,7 @@ const messages = {
       location: 'Ubicación',
       settings: 'Configuraciones',
       logout: 'Cerrar sesión',
+      userRole: 'Usuario: cuidador',
       addPatientDialog: {
         header: 'Agregar Paciente',
         name: 'Nombre',
@@ -195,8 +199,10 @@ const messages = {
       }
     },
     patientList: {
+        
         title: 'Lista de Pacientes',
         columns: {
+          id: 'Id',
           name: 'Nombre',
           address: 'Dirección',
           date: 'Fecha',

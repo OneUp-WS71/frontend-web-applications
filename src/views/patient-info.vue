@@ -53,6 +53,7 @@ import jsPDF from 'jspdf';
 import logo from '../assets/logo_lila.png';
 import abuelo from '../assets/ProductsImage.png';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import i18n from '@/config/i18n';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiY3Jpc29yczA5IiwiYSI6ImNseHMzcGIzMDE2dXQyd3BrbzRxZDJpemkifQ.DflG0_KHMBjn7c26appWIg';
 
@@ -160,37 +161,64 @@ export default {
     });
 
     const downloadPDF = () => {
-      const doc = new jsPDF();
+  const doc = new jsPDF();
 
-      doc.addImage(logo, 'PNG', 10, 10, 30, 30);
-      doc.setFontSize(22);
-      doc.text('ONEUP', 50, 30);
+  doc.addImage(logo, 'PNG', 10, 10, 30, 30);
+  doc.setFontSize(22);
+  doc.text('ONEUP', 50, 30);
 
-      doc.setFontSize(18);
-      doc.text('{{ $t("patientInfo.patientInfoTitle") }}', 105, 50, null, null, 'center');
+  doc.setFontSize(18);
+  doc.text(i18n.global.t('patientInfo.patientInfoTitle'), 105, 50, null, null, 'center');
 
-      doc.addImage(abuelo, 'PNG', 125, 60, 75, 100);
+  const imageX = 125;
+  const imageY = 60;
+  const imageWidth = 75;
+  const imageHeight = 100;
 
-      doc.setFontSize(12);
+  doc.addImage(abuelo, 'PNG', imageX, imageY, imageWidth, imageHeight);
 
-      if (patientDevice.value) {
-        doc.text('{{ $t("patientInfo.deviceSectionTitle") }}', 10, 70);
-        doc.text(`{{ $t("patientInfo.deviceId") }}: ${patientDevice.value.id}`, 10, 80);
-        doc.text(`{{ $t("patientInfo.productQuantity") }}: ${patientDevice.value.productQuantity}`, 10, 90);
+  doc.setFontSize(12);
+
+  const textX = imageX - 115; // Ajusta esta posición para alinear con la imagen
+
+  if (patientDevice.value) {
+    doc.text(i18n.global.t('patientInfo.deviceSectionTitle'), textX, 70);
+    doc.text(`${i18n.global.t('patientInfo.deviceId')}: ${patientDevice.value.id}`, textX, 80);
+    doc.text(`${i18n.global.t('patientInfo.productQuantity')}: ${patientDevice.value.productQuantity}`, textX, 90);
+  }
+
+  let currentY = 70;
+  if (patientLastReport.value) {
+    doc.text(i18n.global.t('patientInfo.lastReportSectionTitle'), textX, currentY);
+    currentY += 10;
+    doc.text(`${i18n.global.t('patientInfo.reportId')}: ${patientLastReport.value.id}`, textX, currentY);
+    currentY += 10;
+    doc.text(`${i18n.global.t('patientInfo.heartRate')}: ${patientLastReport.value.heartRate}`, textX, currentY);
+    currentY += 10;
+    doc.text(`${i18n.global.t('patientInfo.breathingFrequency')}: ${patientLastReport.value.breathingFrequency}`, textX, currentY);
+    currentY += 10;
+    doc.text(`${i18n.global.t('patientInfo.temperature')}: ${patientLastReport.value.temperature}`, textX, currentY);
+    currentY += 10;
+    
+    const locationText = `${i18n.global.t('patientInfo.location')}: ${locationName.value}`;
+    const locationLines = doc.splitTextToSize(locationText, imageX - textX); // Ajusta el ancho máximo del texto
+
+    // Ajusta la primera línea a la par del resto del texto
+    doc.text(locationLines[0], textX, currentY);
+    currentY += 10;
+
+    // Comprueba si las líneas restantes tocan la imagen
+    locationLines.slice(1).forEach((line) => {
+      if (currentY >= imageY && currentY <= imageY + imageHeight) {
+        currentY =   imageHeight + 30;  // Mueve currentY debajo de la imagen
       }
+      doc.text(line, textX, currentY);
+      currentY += 10;
+    });
+  }
 
-      if (patientLastReport.value) {
-        doc.text('{{ $t("patientInfo.lastReportSectionTitle") }}', 10, 110);
-        doc.text(`{{ $t("patientInfo.reportId") }}: ${patientLastReport.value.id}`, 10, 120);
-        doc.text(`{{ $t("patientInfo.heartRate") }}: ${patientLastReport.value.heartRate}`, 10, 130);
-        doc.text(`{{ $t("patientInfo.breathingFrequency") }}: ${patientLastReport.value.breathingFrequency}`, 10, 140);
-        doc.text(`{{ $t("patientInfo.temperature") }}: ${patientLastReport.value.temperature}`, 10, 150);
-        doc.text(`{{ $t("patientInfo.location") }}: ${locationName.value}`, 10, 160);
-      }
-
-      doc.save('reporte_paciente.pdf');
-    };
-
+  doc.save('reporte_paciente.pdf');
+};
     onMounted(() => {
       fetchPatientDevice();
       fetchPatientLastReport();

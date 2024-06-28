@@ -3,7 +3,7 @@ import './assets/main.css';
 import 'primevue/resources/themes/lara-light-indigo/theme.css';
 import 'primevue/resources/primevue.min.css';
 import 'primeicons/primeicons.css';
-
+import 'primeflex/primeflex.css'; 
 
 // Importación de librerías y componentes
 import { createApp } from 'vue';
@@ -25,6 +25,7 @@ import Calendar from 'primevue/calendar';
 import Row from 'primevue/row';
 import Message from 'primevue/message';
 import Toast from 'primevue/toast';
+import ToastService from 'primevue/toastservice';
 
 
 
